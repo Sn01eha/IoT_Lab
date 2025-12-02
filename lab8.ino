@@ -4,14 +4,12 @@ long duration;
 float distance;
 float tankDepth=325;
 float waterLevel;
-
 void setup()
 {
   Serial.begin(9600);
   pinMode(TRIG, OUTPUT);
   pinMode(ECHO, INPUT);
 }
-
 void loop()
 {
   digitalWrite(TRIG, LOW);
@@ -21,11 +19,9 @@ void loop()
   digitalWrite(TRIG,LOW);
   duration=pulseIn(ECHO,HIGH);
   distance=duration*0.034/2;
-  waterLevel=tankDepth-distance;
-  
+  waterLevel=tankDepth-distance; 
   if(waterLevel<0)waterLevel=0;
   if(waterLevel>tankDepth)waterLevel=tankDepth;
-  
   Serial.print("Water level:");
   Serial.print(waterLevel);
   Serial.print(" cm /Depth ");
